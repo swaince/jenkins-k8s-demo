@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry-deployment
+spec:
+  selector:
+    matchLabels:
+      name: cne-power-registry
+  template:
+    spec:
+      containers:
+        - name: cne-power-registry
+          image: registry.cnegroup.com/library/registry
+          ports:
+            - containerPort: 8761
