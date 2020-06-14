@@ -2,15 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: registry-deployment
-  labels:
-    app: registry-deployment
 spec:
   selector:
     matchLabels:
-      app: registry-deployment
+      app: cne-power-registry
   template:
     metadata:
-      name: cne-power-registry
+      labels:
+        app: cne-power-registry
     spec:
       containers:
         - name: cne-power-registry
