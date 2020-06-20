@@ -73,7 +73,7 @@ podTemplate(label: label,
             sh "pwd"
             kubernetesDeploy(
                     kubeconfigId: 'b7185eaf-ca8a-4c5d-b77a-f8491c9973e6',
-                    configs: 'deploy/*.yml'
+                    configs: 'deploy/deployment.yaml'
             )
         }
     }
