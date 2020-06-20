@@ -1,8 +1,13 @@
 def label = 'jenkins-slave'
-podTemplate(label: label, name: 'kubernetes', containers: [
-        containerTemplate(name: 'maven', image: 'maven:aliyun', ttyEnabled: true, command: 'cat')
-]) {
-    node (label){
+podTemplate(label: label,
+        name: 'kubernetes',
+        containers: [
+                containerTemplate(name: 'maven', image: 'maven:aliyun', ttyEnabled: true, command: 'cat')
+        ],
+        volumes: [
+                hostPathVolume(hostPath: '/opt/maven', mountPath: '/usr/share/maven')
+        ]) {
+    node(label) {
 
         stage("初始化构建环境") {
             echo "正在初始化构建环境。。。"
