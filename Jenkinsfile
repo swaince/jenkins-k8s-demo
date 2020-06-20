@@ -48,7 +48,7 @@ podTemplate(label: label, name: 'kubernetes', containers: [
                       extensions                       : [[$class                           : 'CleanBeforeCheckout',
                                                            deleteUntrackedNestedRepositories: true]],
                       submoduleCfg                     : [],
-                      userRemoteConfigs                : [[credentialsId: "26830786-c9a1-4621-8cdc-871f51c1cd90",
+                      userRemoteConfigs                : [[credentialsId: "9bdbe648-81fc-4f8b-aa14-a2b16a31ff2d",
                                                            url          : "https://github.com/swaince/jenkins-k8s-demo.git"]]])
             echo("代码拉取完成")
         }
@@ -65,7 +65,7 @@ podTemplate(label: label, name: 'kubernetes', containers: [
         //调用Kubernetes Continuous Deploy Plugin 插件
         stage('deploy') {
             kubernetesDeploy(
-                    kubeconfigId: '6c55a149-24d1-471b-8906-f87d45839e3d',
+                    kubeconfigId: 'b7185eaf-ca8a-4c5d-b77a-f8491c9973e6',
                     configs: 'deploy/*.yml'
             )
         }
