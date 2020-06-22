@@ -13,6 +13,18 @@ podTemplate(label: label,
             echo "正在初始化构建环境。。。"
             properties([[$class: 'JiraProjectProperty'],
                         parameters([
+                                string(name: 'git_repo',
+                                        defaultValue: '',
+                                        description: 'git仓库',
+                                        trim: true),
+                                string(name: 'k8s_auth',
+                                        defaultValue: '',
+                                        description: 'k8s凭证',
+                                        trim: true),
+                                string(name: 'git_auth',
+                                        defaultValue: '',
+                                        description: 'git凭证',
+                                        trim: true),
                                 gitParameter(name: 'git_branch',
                                         branch: '',
                                         branchFilter: '.*',
@@ -53,8 +65,8 @@ podTemplate(label: label,
                       extensions                       : [[$class                           : 'CleanBeforeCheckout',
                                                            deleteUntrackedNestedRepositories: true]],
                       submoduleCfg                     : [],
-                      userRemoteConfigs                : [[credentialsId: "9bdbe648-81fc-4f8b-aa14-a2b16a31ff2d",
-                                                           url          : "https://github.com/swaince/jenkins-k8s-demo.git"]]])
+                      userRemoteConfigs                : [[credentialsId: "${git_auth}",
+                                                           url          : "${git_repo}"]]])
             echo("代码拉取完成")
         }
 
@@ -72,8 +84,8 @@ podTemplate(label: label,
             sh "ls -al"
             sh "pwd"
             kubernetesDeploy(
-                    kubeconfigId: 'b7185eaf-ca8a-4c5d-b77a-f8491c9973e6',
-                    configs: 'deploy/deployment.yaml'
+                    kubeconfigId: "${k8s_auth}",
+                    configs: 'deploy/*.yaml'
             )
         }
     }
