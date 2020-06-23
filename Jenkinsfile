@@ -5,7 +5,7 @@ podTemplate(label: label,
                 containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', ttyEnabled: true, command: 'cat')
         ],
         volumes: [
-                hostPathVolume(hostPath: '/opt/maven', mountPath: '/usr/share/maven')
+                hostPathVolume(hostPath: '/opt/maven', mountPath: '/usr/share/maven'),
                 hostPathVolume(hostPath: '/etc/hosts', mountPath: '/etc/hosts')
         ]) {
     node(label) {
