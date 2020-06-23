@@ -32,4 +32,4 @@ spec:
     app: service
   ports:
     - port: 8080
-      nodePort: 38080
+      nodePort: 31080

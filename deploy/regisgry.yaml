@@ -32,4 +32,4 @@ spec:
     app: registry
   ports:
     - port: 8761
-      nodePort: 38761
+      nodePort: 31761
