@@ -1,12 +1,12 @@
 #!/bin/bash
 swapoff -a
-sed -i 's/\/dev\/mapper\/centos-swap/# \/dev\/mapper\/centos-swap/g' /etc/fstab
+cp /etc/fstab /etc/fstab.bak && cat /etc/fstab.bak | grep -v swap > /etc/fstab
 
 cat >> /etc/hosts <<EOF
-192.168.103.100 k8s-master
-192.168.103.101 k8s-node1
-192.168.103.102 k8s-node2
-192.168.103.30 registry.cnegroup.com
+192.168.2.100 k8s-master
+192.168.2.101 k8s-node1
+192.168.2.102 k8s-node2
+192.168.2.30 registry.cnegroup.com
 EOF
 
 cat > /etc/sysctl.d/k8s.conf <<EOF

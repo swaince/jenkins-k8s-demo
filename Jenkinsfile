@@ -2,7 +2,7 @@ def label = 'jenkins-slave'
 podTemplate(label: label,
         name: 'kubernetes',
         containers: [
-                containerTemplate(name: 'maven', image: 'maven:aliyun', ttyEnabled: true, command: 'cat')
+                containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', ttyEnabled: true, command: 'cat')
         ],
         volumes: [
                 hostPathVolume(hostPath: '/opt/maven', mountPath: '/usr/share/maven')
