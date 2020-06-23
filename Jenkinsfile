@@ -6,6 +6,7 @@ podTemplate(label: label,
         ],
         volumes: [
                 hostPathVolume(hostPath: '/opt/maven', mountPath: '/usr/share/maven')
+                hostPathVolume(hostPath: '/etc/hosts', mountPath: '/etc/hosts')
         ]) {
     node(label) {
 
