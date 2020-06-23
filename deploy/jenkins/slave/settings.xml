@@ -26,10 +26,10 @@
 
     <mirrors>
         <mirror>
-            <id>cnegroup</id>
+            <id>aliyun</id>
             <mirrorOf>*</mirrorOf>
             <name>cnegroup-maven</name>
-            <url>http://192.168.2.12:8081/repository/maven-public/</url>
+            <url>https://maven.aliyun.com/repository/public</url>
         </mirror>
     </mirrors>
 
